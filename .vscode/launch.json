@@ -1,0 +1,59 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "run a",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
+            "args": [
+                "1",
+                "a"
+            ],
+            "cwd": "${workspaceFolder}/bin/Debug/net9.0",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "test a",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
+            "args": [
+                "1",
+                "a",
+                "test"
+            ],
+            "cwd": "${workspaceFolder}/bin/Debug/net9.0",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "run b",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
+            "args": [
+                "1",
+                "b"
+            ],
+            "cwd": "${workspaceFolder}/bin/Debug/net9.0",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "test b",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "dotnet: build",
+            "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
+            "args": [
+                "1",
+                "b",
+                "test"
+            ],
+            "cwd": "${workspaceFolder}/bin/Debug/net9.0",
+            "console": "integratedTerminal"
+        }
+    ]
+}
