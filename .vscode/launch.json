@@ -8,7 +8,7 @@
             "preLaunchTask": "dotnet: build",
             "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
             "args": [
-                "3",
+                "4",
                 "a"
             ],
             "cwd": "${workspaceFolder}/bin/Debug/net9.0",
@@ -21,7 +21,7 @@
             "preLaunchTask": "dotnet: build",
             "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
             "args": [
-                "3",
+                "4",
                 "a",
                 "test"
             ],
@@ -35,7 +35,7 @@
             "preLaunchTask": "dotnet: build",
             "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
             "args": [
-                "3",
+                "4",
                 "b"
             ],
             "cwd": "${workspaceFolder}/bin/Debug/net9.0",
@@ -48,7 +48,7 @@
             "preLaunchTask": "dotnet: build",
             "program": "${workspaceFolder}/bin/Debug/net9.0/AdventOfCode2024.dll",
             "args": [
-                "3",
+                "4",
                 "b",
                 "test"
             ],
