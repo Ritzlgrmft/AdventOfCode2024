@@ -1,4 +1,5 @@
-﻿using AdventOfCode2024;
+﻿using System.Diagnostics;
+using AdventOfCode2024;
 
 if (args.Length < 2)
 {
@@ -25,5 +26,6 @@ if (worker == null)
 }
 
 Console.WriteLine($"Calling {workerType} with {fileName}");
+var stopwatch = Stopwatch.StartNew();
 var result = worker.DoWork(inputFile);
-Console.WriteLine(result);
+Console.WriteLine("{0}, {1}", result, stopwatch.Elapsed);
