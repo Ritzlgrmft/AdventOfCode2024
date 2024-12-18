@@ -1,7 +1,4 @@
 ﻿using System.Data;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.ExceptionServices;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode2024.Day7a;
 

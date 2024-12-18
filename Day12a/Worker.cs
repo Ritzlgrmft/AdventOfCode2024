@@ -1,11 +1,10 @@
-﻿using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 
 namespace AdventOfCode2024.Day12a;
 
 public class Worker : IWorker
 {
-    List<string> map;
+    List<string> map = [];
     List<(char plant, List<(int x, int y)> positions)> regions = [];
 
     public long DoWork(string inputFile)

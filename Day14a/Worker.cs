@@ -1,8 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-
-namespace AdventOfCode2024.Day14a;
+﻿namespace AdventOfCode2024.Day14a;
 
 public class Worker : IWorker
 {

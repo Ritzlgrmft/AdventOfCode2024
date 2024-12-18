@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace AdventOfCode2024.Day9b;
+﻿namespace AdventOfCode2024.Day9b;
 
 public class Worker : IWorker
 {

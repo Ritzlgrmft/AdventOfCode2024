@@ -1,7 +1,4 @@
-﻿using System.Runtime.ExceptionServices;
-using System.Text.RegularExpressions;
-
-namespace AdventOfCode2024.Day5b;
+﻿namespace AdventOfCode2024.Day5b;
 
 public class Worker : IWorker
 {

@@ -1,11 +1,10 @@
-﻿using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 
 namespace AdventOfCode2024.Day11b;
 
 public class Worker : IWorker
 {
-    List<Dictionary<long, long>> stoneCache;
+    List<Dictionary<long, long>> stoneCache = [];
 
     public long DoWork(string inputFile)
     {

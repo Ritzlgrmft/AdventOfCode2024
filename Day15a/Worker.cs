@@ -1,10 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Runtime.CompilerServices;
-using Microsoft.VisualBasic;
-
-namespace AdventOfCode2024.Day15a;
+﻿namespace AdventOfCode2024.Day15a;
 
 public class Worker : IWorker
 {

@@ -1,5 +1,4 @@
-﻿using System.Runtime.ExceptionServices;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace AdventOfCode2024.Day3a;
 

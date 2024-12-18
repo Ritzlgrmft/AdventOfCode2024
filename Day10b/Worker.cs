@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 
 namespace AdventOfCode2024.Day10b;
 

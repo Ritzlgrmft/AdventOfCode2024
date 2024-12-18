@@ -1,6 +1,4 @@
-﻿using System.Runtime.ExceptionServices;
-
-namespace AdventOfCode2024.Day1b;
+﻿namespace AdventOfCode2024.Day1b;
 
 public class Worker : IWorker
 {

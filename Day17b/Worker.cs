@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace AdventOfCode2024.Day17b;
+﻿namespace AdventOfCode2024.Day17b;
 
 public class Worker : IWorker
 {
