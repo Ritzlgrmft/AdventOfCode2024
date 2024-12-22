@@ -1,29 +1,25 @@
-﻿using Microsoft.VisualBasic;
-
-namespace AdventOfCode2024.Day21a;
+﻿namespace AdventOfCode2024.Day21b;
 
 public class Worker : IWorker
 {
-
     public long DoWork(string inputFile)
     {
-        var sum = 0;
+        var sum = 0L;
         foreach (var line in File.ReadLines(inputFile))
         {
             var results = new List<string>();
-            var sequences = CalculateNumericMoves("A" + line);
+            var minLength = CalculateNumericMoves("A" + line);
 
-            sequences.GroupBy(s => s.Length).ToList().ForEach(g => Console.WriteLine($"{g.Key} {g.Count()}"));
-
-            var c1 = sequences.Min(s => s.Length);
+            var c1 = minLength;
             var c2 = int.Parse(new string(line.ToCharArray().Where(c => char.IsDigit(c)).ToArray()));
             sum += c1 * c2;
+            Console.WriteLine("{0}: {1}", line, c1);
         }
 
         return sum;
     }
 
-    private List<string> CalculateNumericMoves(string input)
+    private long CalculateNumericMoves(string input)
     {
         var sequences = new List<string>();
         for (var i = 0; i < input.Length - 1; i++)
@@ -39,16 +35,33 @@ public class Worker : IWorker
             }
         }
 
-        var finalSequences = new List<string>();
+        var sequenceLengths = new List<long>();
         foreach (var sequence in sequences)
         {
-            finalSequences.AddRange(CalculateDirectionalMoves("A" + sequence, 1));
+            sequenceLengths.Add(CalculateDirectionalMoves("A" + sequence, 25));
         }
-        return finalSequences;
+        return sequenceLengths.Min();
     }
 
-    private List<string> CalculateDirectionalMoves(string input, int count)
+    readonly Dictionary<(string input, int count), long> cache = [];
+
+    private long CalculateDirectionalMoves(string input, int count)
     {
+        var length = 0L;
+        foreach (var inputPart in input.Split('A').Skip(1).SkipLast(1))
+        {
+            length += CalculateDirectionalMoves2("A" + inputPart + "A", count);
+        }
+        return length;
+    }
+
+    private long CalculateDirectionalMoves2(string input, int count)
+    {
+        if (cache.TryGetValue((input, count), out long value))
+        {
+            return value;
+        }
+
         var sequences = new List<string>();
         for (var i = 0; i < input.Length - 1; i++)
         {
@@ -62,20 +75,15 @@ public class Worker : IWorker
                 sequences = sequences.SelectMany(s => nextSequences, (s1, s2) => s1 + s2).ToList();
             }
         }
+        var minLength = (long)sequences.Min(s => s.Length);
 
-        if (count == 2)
+        if (count > 1)
         {
-            return sequences;
+            minLength = sequences.Select(s => CalculateDirectionalMoves("A" + s, count - 1)).Min();
         }
-        else
-        {
-            var nextSequences = new List<string>();
-            foreach (var sequence in sequences)
-            {
-                nextSequences.AddRange(CalculateDirectionalMoves("A" + sequence, count + 1));
-            }
-            return nextSequences;
-        }
+
+        cache[(input, count)] = minLength;
+        return minLength;
     }
 
     //     +---+---+
@@ -91,8 +99,15 @@ public class Worker : IWorker
     {'v',(1,1)},
     {'>',(2,1)}};
 
+    Dictionary<(char start, char end), List<string>> sequenceCache = [];
+
     private List<string> GetDirectionalSequences(char start, char end)
     {
+        if (sequenceCache.TryGetValue((start, end), out List<string>? value))
+        {
+            return value;
+        }
+
         var startPos = directionalPad[start];
         var endPos = directionalPad[end];
         (char c, int count) horizontal = startPos.x < endPos.x ? ('>', endPos.x - startPos.x) : ('<', startPos.x - endPos.x);
@@ -108,6 +123,7 @@ public class Worker : IWorker
             sequences = sequences.Where(s => !s.StartsWith('^')).ToList();
         }
 
+        sequenceCache[(start, end)] = sequences;
         return sequences;
     }
 
@@ -136,6 +152,11 @@ public class Worker : IWorker
 
     private List<string> GetNumericSequences(char start, char end)
     {
+        if (sequenceCache.TryGetValue((start, end), out List<string>? value))
+        {
+            return value;
+        }
+
         var startPos = numericPad[start];
         var endPos = numericPad[end];
         (char c, int count) horizontal = startPos.x < endPos.x ? ('>', endPos.x - startPos.x) : ('<', startPos.x - endPos.x);
@@ -159,6 +180,7 @@ public class Worker : IWorker
             sequences = sequences.Where(s => !s.StartsWith("<<")).ToList();
         }
 
+        sequenceCache[(start, end)] = sequences;
         return sequences;
     }
 
