@@ -162,16 +162,6 @@ public class Worker : IWorker
         }
     }
 
-    // private void AddIfFreeAndNotAlreadyVisited(int score, (int x, int y) position, (int dx, int dy) direction)
-    // {
-    //     if (GetField(position.x, position.y) == '.' &&
-    //         !visited.Any(p => p.position == position && p.direction == direction && p.score <= score) &&
-    //         !positionsToCheck.Contains((score, position, direction)))
-    //     {
-    //         positionsToCheck.Add((score, position, direction));
-    //     }
-    // }
-
     char GetField(int x, int y)
     {
         if (x >= 0 && x < map[0].Length && y >= 0 && y < map.Count)
