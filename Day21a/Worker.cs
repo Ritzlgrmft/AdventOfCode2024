@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace AdventOfCode2024.Day21a;
+﻿namespace AdventOfCode2024.Day21a;
 
 public class Worker : IWorker
 {
